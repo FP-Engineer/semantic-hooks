@@ -6,14 +6,10 @@ This react library boilerplate uses the following:
 - [Rollup](https://rollupjs.org/guide/en/)
 - [Prettier](https://prettier.io/)
 - [ESLint](https://eslint.org/)
-- [StyleLint](https://stylelint.io/)
-- [Storybook](https://storybook.js.org/)
-- [SCSS](https://sass-lang.com/)
 - [Jest](https://jestjs.io/)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 - [Semantic Release](https://semantic-release.gitbook.io/)
 - [Github Actions](https://github.com/features/actions)
-- [Hygen](https://www.hygen.io/)
 
 ## Setup
 
@@ -24,51 +20,12 @@ This react library boilerplate uses the following:
 ## Basic Folder Structure
 
 ```
-├── .storybook
 ├── src
-│   ├── components
-|   |   ├── Example
-|   |   |   ├── __tests__
-|   |   |   |   ├── Example.test.tsx
-|   |   |   ├── example.scss
-|   |   |   ├── Example.stories.tsx
-|   |   |   ├── Example.tsx
-|   |   |   ├── index.ts
-|   |   ├── index.ts
 |   ├── index.ts
 ├── LICENSE
 ├── package.json
 ├── README.md
 ```
-
-## Add a new component
-
-- You can automatically create a new component using the `yarn component:new` command.
-- Or, you can manually add the new component directory in the `src/components` directory following this folder structure
-
-```
-├── MyComponent
-|   ├── __tests__
-|   |   ├── MyComponent.test.tsx
-|   ├── MyComponent.scss
-|   ├── MyComponent.stories.tsx
-|   ├── MyComponent.tsx
-|   ├── index.ts
-
-```
-
-Once you have created your new component make sure you have exported it in the `src/components/index.ts` file. Doing so allows the component to be compiled into the final bundle using rollup.
-
-```
-// src/components/index.ts
-export \* from './MyComponent';
-export \* from './SomeOtherComponent';
-
-```
-
-> You can skip all of this and use the built in component generator. The template for the component is in `_templates/component/with-prompt`. Simply run the following command to automatically create your new component. It will prompt you for the component name and then build out all the files and correct exports.`yarn component:new`
-
-You can develop your new component using storybook as your playground. Once you have added the `.stories.tsx` file for you new component, you can run `yarn storybook` to start the service.
 
 ## Tests
 
@@ -115,14 +72,6 @@ $ yarn format:check
 ```
 
 $ yarn lint
-
-```
-
-## Storybook
-
-```
-
-$ yarn storybook
 
 ```
 
