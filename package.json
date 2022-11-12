@@ -2,6 +2,7 @@
   "name": "semantic-hooks",
   "license": "MIT",
   "version": "0.0.0",
+  "type": "module",
   "private": false,
   "description": "React Typescript Library to enrich lifecycle associated hooks with semantics.",
   "author": "Fabian Pfeiffer",
