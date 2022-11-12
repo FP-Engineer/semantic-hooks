@@ -1,5 +1,4 @@
-import { renderHook as create } from '@testing-library/react-hooks';
-import { update, unmount, act } from 'react-test-renderer';
+import { renderHook as create, act } from '@testing-library/react-hooks';
 
 import useDidMount from './useDidMount';
 
@@ -17,13 +16,13 @@ describe('useDidMount test suite', () => {
     expect(callback).toHaveBeenCalled();
 
     act(() => {
-      update(dummy);
+      dummy.rerender();
     });
 
     expect(callback).toHaveBeenCalledTimes(1);
 
     act(() => {
-      unmount(dummy);
+      dummy.unmount();
     });
 
     expect(callback).toHaveBeenCalledTimes(1);
