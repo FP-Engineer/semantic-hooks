@@ -22,7 +22,7 @@
     "lint:script": "eslint ./src --ext .js,.jsx,.ts,.tsx",
     "test": "jest --maxWorkers=2",
     "test:watch": "yarn test --watch",
-    "test:coverage": "jest --coverage --colors --maxWorkers=2",
+    "test:coverage": "jest --coverage --colors --maxWorkers=2 --passWithNoTests",
     "publish": "npx semantic-release --no-ci"
   },
   "main": "index.js",
