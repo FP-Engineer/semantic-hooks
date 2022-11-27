@@ -1,53 +1,56 @@
-import { renderHook as create, act } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react-hooks';
 
 import useDidUpdate from './useDidUpdate';
 
 describe('useDidUpdate test suite', () => {
 
-  it('Should not be called on mount', () => {
+  it('Should not be called without deps', () => {
 
     let dummy;
     const callback = jest.fn();
 
     act(() => {
-      dummy = create(() => useDidUpdate(callback));
+      dummy = renderHook(() => useDidUpdate(callback));
     });
-    
+
     expect(callback).not.toHaveBeenCalled();
 
     act(() => {
       dummy.rerender();
     });
 
-    expect(callback).toHaveBeenCalled();
+    expect(callback).not.toHaveBeenCalled();
 
     act(() => {
       dummy.unmount();
     });
 
-    expect(callback).toHaveBeenCalledTimes(1);
+    expect(callback).not.toHaveBeenCalled();
   });
 
   it('Should only be called if the referenced deps change', () => {
 
     let dummy;
     const callback = jest.fn();
-	const initProp = 'initial';
+	  const initialProps = {value: 'initial'};
+    const updatedProps = {value: 'updated'};
 
     act(() => {
-      dummy = create(() => useDidUpdate(callback, [initProp]));
+      dummy = renderHook((props) => useDidUpdate(callback, [props.value]), {
+        initialProps,
+      });
     });
     
     expect(callback).not.toHaveBeenCalled();
 
     act(() => {
-      dummy.rerender(initProp);
+      dummy.rerender(initialProps);
     });
 
     expect(callback).not.toHaveBeenCalled();
 
-	act(() => {
-		dummy.rerender('updated');
+	  act(() => {
+		  dummy.rerender(updatedProps);
 	  });
   
 	  expect(callback).toHaveBeenCalled();
