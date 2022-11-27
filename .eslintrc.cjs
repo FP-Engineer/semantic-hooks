@@ -36,6 +36,7 @@ module.exports = {
     'react-hooks/rules-of-hooks': rules.ON,
     'react-hooks/exhaustive-deps': rules.WARN,
     'prefer-spread': rules.WARN,
+    "indent": [rules.ON, "tab"],
   },
   settings: {
     react: {
