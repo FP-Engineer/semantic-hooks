@@ -4,27 +4,27 @@ import useDidMount from './useDidMount';
 
 describe('useDidMount test suite', () => {
 
-  it('Should be called only once throughout the components life cycle', () => {
+	it('Should be called only once throughout the components life cycle', () => {
 
-    let dummy;
-    const callback = jest.fn();
+		let dummy;
+		const callback = jest.fn();
 
-    act(() => {
-      dummy = create(() => useDidMount(callback));
-    });
+		act(() => {
+			dummy = create(() => useDidMount(callback));
+		});
     
-    expect(callback).toHaveBeenCalled();
+		expect(callback).toHaveBeenCalled();
 
-    act(() => {
-      dummy.rerender();
-    });
+		act(() => {
+			dummy.rerender();
+		});
 
-    expect(callback).toHaveBeenCalledTimes(1);
+		expect(callback).toHaveBeenCalledTimes(1);
 
-    act(() => {
-      dummy.unmount();
-    });
+		act(() => {
+			dummy.unmount();
+		});
 
-    expect(callback).toHaveBeenCalledTimes(1);
-  });
+		expect(callback).toHaveBeenCalledTimes(1);
+	});
 });

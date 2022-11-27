@@ -4,27 +4,27 @@ import useUnmount from './useUnmount';
 
 describe('useUnmount test suite', () => {
 
-  it('Should be called only once throughout the components life cycle', () => {
+	it('Should be called only once throughout the components life cycle', () => {
 
-    let dummy;
-    const callback = jest.fn();
+		let dummy;
+		const callback = jest.fn();
 
-    act(() => {
-      dummy = create(() => useUnmount(callback));
-    });
+		act(() => {
+			dummy = create(() => useUnmount(callback));
+		});
     
-    expect(callback).not.toHaveBeenCalled();
+		expect(callback).not.toHaveBeenCalled();
 
-    act(() => {
-      dummy.rerender();
-    });
+		act(() => {
+			dummy.rerender();
+		});
 
-    expect(callback).not.toHaveBeenCalled();
+		expect(callback).not.toHaveBeenCalled();
 
-    act(() => {
-      dummy.unmount();
-    });
+		act(() => {
+			dummy.unmount();
+		});
 
-    expect(callback).toHaveBeenCalledTimes(1);
-  });
+		expect(callback).toHaveBeenCalledTimes(1);
+	});
 });
